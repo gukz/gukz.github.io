@@ -7,7 +7,7 @@
 + 贪心算法
 ##### 动态规划
 对于第i天的最大收益，应分成两种情况，一是该天结束后手里没有stock，可能是保持前一天的状态也可能是今天卖出了，此时令收益为cash；二是该天结束后手中有一个stock，可能是保持前一天的状态，也可能是今天买入了，用hold表示。由于第i天的情况只和i-1天有关，所以用两个变量cash和hold就可以，不需要用数组。C++代码如下：
-```
+```java
     int maxProfit(vector<int>& prices, int fee) {
         int cash=0;//the maxPro you have if you don't have a stock that day
         int hold=-prices[0];//the maxPro you have if you have a stock that day, if you have a stock the first day,hold=-prices[0]
@@ -21,7 +21,7 @@
 这里需要注意cash和hold的初始值，最终输出cash，因为最后一天的情况一定是手里没有stock的。
 ##### 贪心算法
 贪心选择的关键是找到一个最大后是不是能够卖掉stock，重新开始寻找买入机会。比如序列1 3 2 8，如果发现2小于3就完成交易买1卖3，此时由于fee=2，（3-1-fee）+(8-2-fee)<(8-1-fee)，所以说明卖早了，令max是当前最大price，当（max-price[i]>=fee）时可以在max处卖出，且不会存在卖早的情况，再从i开始重新寻找买入机会。c++代码如下：
-```
+```java
     int maxProfit(vector<int>& prices, int fee) {
         int profit=0;
         int curProfit=0;
@@ -52,7 +52,7 @@ curProfit记录了当前一次交易能得到的最大收益，只有当maxP-pri
 ##### 我的解法
 一开始王的思路就是使用递归的方式来实现, 每次向右侧或者下侧移动一步直到到达终点，可以很容易的写出代码，但是显示超时。
 于是我想到在每一个格点上记录到达这个地方一共有多少种方法。
-```
+```java
     int res = 0;
     int [][]grid;
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
