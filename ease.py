@@ -38,7 +38,7 @@ def get_md_files_name():
             os.rename(pyfile, new_pyfile)
             print('rename', filename)
             pyfile = new_pyfile
-        catalog.append('[{}](_posts/{})'.format(
+        catalog.append('+ [{}](_posts/{})'.format(
                 generate_note_title(pyfile), filename))
     return catalog
 
