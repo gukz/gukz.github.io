@@ -7,5 +7,7 @@ for line in f:  # python2.2 之后，可以直接对一个file对象使用for实
     # do something
 f.close()
 ```
-问题在于，如果do something时出现了异常，是否会导致file不正常关闭
+### 原则
++ ```try```内部代码近
 
+### docker file 中每一行的编写都要考虑这一层能不能缓存
