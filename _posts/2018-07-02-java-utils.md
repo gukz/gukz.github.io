@@ -25,6 +25,7 @@ StringBuffer buffer = new StringBuffer().append("thread").append("safe");  // ็บ
 + Array 
 + List 
 + Set
++ ljljljlj
 + Map
 + Tree
 + others
