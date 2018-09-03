@@ -4,11 +4,12 @@ from datetime import datetime, date
 
 def generate_note_title(mdfile):
     title = mdfile[mdfile.rfind('/') + 12:mdfile.rfind('.')]
+    print(title)
     with open(mdfile, 'r') as f:
-        lines = [line.strip('# ') for line in f.read().split('\n')
-                 if line.strip('# ') != '']
-        if lines:
-            title = lines[0]
+        lines = f.read()
+        title_line = lines[0] if lines else ''
+        if title_line.strip('# '):
+            return title_line.strip('# ')
     return title
 
 
