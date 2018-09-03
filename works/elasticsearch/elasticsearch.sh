@@ -37,14 +37,14 @@ update_images() {
 
 start() {
 
-#   update_images
-#
-#   docker kill elasticsearch 2>/dev/null
-#   docker rm -v elasticsearch 2>/dev/null
+  update_images
+
+  docker kill elasticsearch 2>/dev/null
+  docker rm -v elasticsearch 2>/dev/null
 #     -v ${ESData}:/usr/share/elasticsearch/data \
 #     -v ${ESLog}:/usr/share/elasticsearch/logs \
 
-  docker run -d \
+  docker run -d --name elasticsearch \
     -p 9200:9200 \
     -e "http.host=0.0.0.0" \
     -e "transport.host=127.0.0.1" \

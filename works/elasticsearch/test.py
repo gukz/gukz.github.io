@@ -151,3 +151,6 @@ res = requests.get(domain+'/megacorp/employee/_search', data=json.dumps(query),
                    headers=headers)
 print('\naggregations query interests and query last_name and averate age\n',
       res.json())
+
+res = requests.get(domain+'/_cluster/health', headers=headers)
+print('\nhealth:\n', res.json())
