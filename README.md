@@ -4,8 +4,7 @@
 + [csrf-token](_posts/2018-07-05-csrf-token.md)
 + [resources](_posts/2018-07-05-resources.md)
 + [h](_posts/2018-07-11-code-review-notes.md)
-+ [
-](_posts/2018-09-03-debug-tips.md)
++ [debug-tips](_posts/2018-09-03-debug-tips.md)
 + [两](_posts/2018-09-03-errs.md)
 + [i](_posts/2018-09-03-install-vim.md)
 + [k8s-tips](_posts/2018-09-03-k8s-tips.md)
