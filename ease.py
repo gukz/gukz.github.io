@@ -4,7 +4,9 @@ from datetime import datetime, date
 
 def generate_note_title(mdfile):
     title = mdfile[mdfile.rfind('/') + 12:mdfile.rfind('.')]
+    title = title.replace('_', '-')
     print(title)
+    return title
     with open(mdfile, 'r') as f:
         lines = f.read()
         title_line = lines[0] if lines else ''
