@@ -3,6 +3,21 @@
 `chmod +x [filename]` 
 `chmod ([ugo][+-][rwx])+ filename`u-当前用户, g-当前用户所在的组, o-不与用户在同一个组的用户(不限定用户则为所有的用户). rwx-读,写,执行
 `` 递归修改子文件及文件夹的权限
+### 解除端口占用
+1.查看8080端口是否开启 ` sudo netstat -anp | grep 8080`
+``` 
+netstat -anp | grep 8080
+tcp        0      0 :::8080                     :::*                        LISTEN      3000/java   
+```
+2.查看占用8080端口的进程 ` sudo fuser -v -n tcp 8080`
+```
+fuser -v -n tcp 8080
+  USER        PID   ACCESS COMMAND   8080/tcp:       
+  zhu        1154    F.... java
+```
+3.杀死占用8080端口的进程
+` kill -s 9 1154`
+
 
 ### fq
 1, 自建shodeworks

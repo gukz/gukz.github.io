@@ -18,3 +18,5 @@
 + [peewee-note](_posts/2018-10-26-peewee-note.md)
 + [shit](_posts/2018-10-26-shit.md)
 + [tea-talk](_posts/2018-10-26-tea_talk.md)
++ [tea-talk](_posts/2018-11-01-tea-talk.md)
++ [white-ip-config](_posts/2018-11-01-white_ip_config.md)
