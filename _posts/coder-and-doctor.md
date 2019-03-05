@@ -24,5 +24,3 @@ elasticsearch的基本使用方法
 看sentry上的报错信息；
 看kibana上的请求日志；
 看grafana的统计信息，CPU内存使用量。
-
-
