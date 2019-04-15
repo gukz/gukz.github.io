@@ -6,7 +6,7 @@
 左下角showApplications 点击弹出应用，打开Language Support→Install/RemoveLanguages
 选中chinese，点击Apply应用即可，等待下载安装完成。
 + 安装ibus框架
-```shell
+```bash
 sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
 ```
 + 启动ibus框架：im-config-s ibus
@@ -14,7 +14,7 @@ im-switch: command not found，找现在改成im-config了。
 + 安装拼音引擎
 我用的是IBus拼音：sudoapt-get install ibus-pinyin
 + 设置ibus框架
-```
+```bash
 sudo ibus-setup
 ```
 在弹出到对话框中选中inputmethod，Add刚才安装的中文拼音就行了。
@@ -32,11 +32,11 @@ Settings→Devices→ Keyboard 在右侧菜单中点击Typing下到Switchto next
 sudo apt-get autoremove python3
 使用dpkg -l|grep python 查看，发现python3前面的标志为rc，含义是已经卸载来包但是配置文件保留了
 想要删除这些rc可以使用这个命令
-```
+```bash
 dpkg -l | grep ^rc | cut -d' ' -f3 | sudo xargs dpkg --purge
 ```
 + 安装python3.7
-```
+```bash
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
 xz -d Python-3.7.0.tar.xz
 tar -xvf Python-3.7.0.tar
@@ -56,12 +56,13 @@ sudo make install
 递归修改子文件及文件夹的权限
 ### 解除端口占用
 + 查看8080端口是否开启 ` sudo netstat -anp | grep 8080`
-``` 
+```bash 
 netstat -anp | grep 8080
 tcp        0      0 :::8080                     :::*                        LISTEN      3000/java   
 ```
+
 + 查看占用8080端口的进程 ` sudo fuser -v -n tcp 8080`
-```
+```bash
 fuser -v -n tcp 8080
   USER        PID   ACCESS COMMAND   8080/tcp:       
   zhu        1154    F.... java

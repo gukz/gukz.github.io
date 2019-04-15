@@ -1,6 +1,6 @@
 # kube-config
 ### 本地配置 ~/.kube/config
-``` yml
+```yml
     apiVersion: v1
     clusters:
     - cluster:
@@ -53,7 +53,7 @@
         client-certificate: /Users/guk/gitstore/usercsrs/it-cuckoo.crt
         client-key: /Users/guk/gitstore/usercsrs/my.key
 ```
-其中crt生成方式：```echo -n '秘钥字符串'|base64 -D > target.crt```
+其中crt生成方式：`echo -n '秘钥字符串'|base64 -D > target.crt`
 
 ### kubectl 常用指令
 + kubectl delete pod xxxxxx --force --grace-period 0 

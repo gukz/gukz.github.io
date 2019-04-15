@@ -2,7 +2,7 @@
 ### git hooks
 .git/hooks/ 钩子文件写完后需要修改权限为可执行 
 ### git config
-```
+```bash
 git config            这个项目
 git config --global   当前登录用户
 git config --system   这台计算机
@@ -19,7 +19,7 @@ git config [_ --global --system] user.email 查看当前的user.email
 - !lib.a
 - __pycache__/
 ### 常用操作注意事项
-```
+```bash
 git mv <filename>            相当于执行以下三条命令
     mv <filename_o> <filename_n>
     git rm <filename_o>
@@ -35,7 +35,7 @@ git log --graph --oneline    简略图形化显示
   HEAD              Index            WorkDir
   分支 <- commit <- 暂存区 <- add <- 本地修改
 ```
-```
+```bash
 git reset --soft HEAD~1      回滚HEAD, 与git commit --amend 作用类似
 git reset [--mixed] HEAD~1   回滚HEAD, Index 默认
 git reset --hard HEAD~1      回滚HEAD, Index, WorkDir [危险]
@@ -47,20 +47,20 @@ git checkout -f              丢弃暂存区和本地的修改, 恢复至commit�
 git commit --amend           将暂存区的修改覆盖提交
 ```
 ### 远程仓库操作
-```
+```bash
 git fetch --all              抓取远程仓库的最新数据
 git remote add <shortname default=origin> <url> 添加远程仓库, 如果url是本地仓库, 会把本地仓库上传到远端
 git remote rename <name1> <name2> 修改远程分支名称, origin->orange
 git remote rm <name> 删除远程仓库
 ```
 ### 打标签
-```
+```bash
 git tag 1.1.1                轻量标签
 git tag -a 1.1.1             含有批注的标签
 git tag -a 1.0.9 9fceb02     给历史分支补打标签
 ```
 ### git 命令别名
-```
+```bash
 git config --global alias.unstage 'reset HEAD --' 
 git congit --global alias.co checkout
 git config --global alias.br branch
@@ -68,7 +68,7 @@ git config --global alias.ci commit
 git config --global alias.st status
 ```
 ### git 分支, 跟踪远程分支(支持git pull push)
-```
+```bash
 git branch -vv               查看所有本地分支跟踪的分支情况
 git branch -u origin/bra2    任何时刻修改本地分支关联的远程分支 -u=--set-upstream-to
 git checkout -b branch1      本地新建一个分支, 并切换
@@ -77,7 +77,7 @@ git push origin branch       把当前分支推送到远程分支branch
 git push origin --delete bra2 删除远程分支
 ```
 ### 变基(git 整合不同分支的修改主要有 merge, rebase merge) 不要对别处有副本的分支进行变基
-```
+```bash
 merge bra 将当前分支和bra和公共祖先进行三方合并,合并的结果作为当前分支的一个新的提交, 有分叉
 rebase bra,merge bra                  将bra序到当前分支的后面. 之后再merge bra, 不再有分叉
 rebase bra brb,co bra,merge brb       将brb的修改序到bra的后面
@@ -86,7 +86,7 @@ git rebase --onto bB bC,merge bC   找出bC相对于bB公共祖先之后的修�
 ### 使用git的协议 HTTP ssh
 
 ### git工具
-```
+```bash
 git stash                        暂存没有commit的已跟踪文件的修改
 git stash list                   查看所有暂存
 git stash apply                  应用暂存
@@ -102,7 +102,7 @@ git blame -L 12,22 simple.py     查看文件第12-22行的修改信息
 git mergetool --tool=vimdiff3    使用vimdiff工具来显示冲突
 ```
 ### 重写历史
-```
+```bash
 git commit --amend               覆盖最近一次提交的快照
 git rebase -i HEAD~n   改写最近n次提交, 在最近第n+1次提交上依次重演所有提交
 git filter-branch -f --commit-filter '

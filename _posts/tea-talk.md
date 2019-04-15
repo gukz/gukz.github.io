@@ -80,3 +80,15 @@ with db.transaction():
 ## python自动格式化代码工具
 - black
 - mypy
+
+# tea talk5
+batch insert
+两个费时操作：建索引 一致性检查
+
+utf8 utf8mb4
+utf8mb4_general_ci(排序性能更好) utf8mb4_unicode_ci(只针对德语 法语 优化) utf8mb4_bin(大小写敏感)
+
+datetime timestamp(时区敏感 底层使用数字 只能保存一定范围的时间)
+
+极客时间 数据库 文章
+有联合索引但是没有使用，原因未知
