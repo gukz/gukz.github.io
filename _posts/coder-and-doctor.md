@@ -1,10 +1,10 @@
-
 # 对架构的理解
 + 项目分层的结构，数据和逻辑层+中间层
 + 基础项目是rpc项目，中间层调用基础项目，通信使用grpc
 + k8s的一些名词：pod/node/deploy/secret/job；pod/node在docker里的对应关系
 + 微服务架构，服务注册和服务发现，servicemesh结构里通信的方式，每个node上都有反向代理
 + 异步任务和消息队列
+
 # 学习一些原理
 + 计算机网络，传输层TCP、UDP和端口，应用层的HTTP/websocket，HTTP状态码
 + 跨域

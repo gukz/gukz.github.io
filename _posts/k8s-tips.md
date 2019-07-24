@@ -1,6 +1,6 @@
 # kube-config
 ### 本地配置 ~/.kube/config
-```yml
+```yaml
     apiVersion: v1
     clusters:
     - cluster:
