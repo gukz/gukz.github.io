@@ -67,3 +67,32 @@ ziplist是一个经过特殊编码的双向链表，设计的目的是为了提�
 ziplist不同于普通的双向链表，链表中每一项都占用独立的一块内存，各项之间用地址指针链接，这样
 会带来大量的内存碎片，而且地址指针也会占用额外内存。而ziplist却是将表中 每一项存放在前一项后续的地址空间
 一个ziplist整体占用一大块内存，它是一个表（list），不是链表（linked list）
+## dict
+字典采用拉链法，有一个装载因子来触发扩容。扩容不是瞬间完成的，扩容被分配到redis的每个操作中，每个操作执行一个entry的
+搬移或者向后遍历一定数量的空节点（确保不影响操作）。
+扩容进行中，新增加的数据会被写入新字段，查找会在新、老字典中进行。
+
+
+# 高层数据结构
+string, quicklist, sorted set,  set
+quicklist内部采用ziplist实现，ziplist是一块连续的内存，存储效率高而修改性能差。quicklist会把数据分成几个ziplist
+形成链表结构, 链表结构优点是容易进行数据修改（增加、删除数据）缺点容易使内存碎片化。redis使用 ziplist来作为
+quicklist的节点的存储结构，是一种修改效率与存储效率的折中。另外可以通过参数配置折中的具体方式，比如每个quicklist
+节点的ziplist最多包含几个数据或者限制ziplist的大小 一个ziplist块的最大大小为64kb
+redis还提供了一个选项，把quicklist中间的ziplist进行压缩，进一步节省内存
+sorted set采用skiplist结构表示,用于解决算法中的查找问题（Searching），根据给定的key快速找到它所在的位置。
+> 一般查找问题可以分为两个大类：1是各种平衡树2是哈希表。
+但skiplist与这两种都不一样 skiplist是一种跳跃链表，在链表中的某些节点上可以直接跳跃到后续节点，这样就缩短了遍历项。
+如果链表是有序的，那就可以以类似二分查找的方式快速定位目标节点的位置。
+redis中的sorted set由skiplist和ziplist和dict实现。
+当数据较少时，sorted set由一个ziplist来实现，当数据较多时，由一个dict+skiplist来实现 。dict用来查询数据到分数的对应
+关系，skiplist用来根据分数查询数据
+总结一下：redis中的skiplist跟前面介绍的经典的skiplist相比，有如下不同：
+1，分数允许重复，即skiplist的key允许重复。在原始的skiplist中不允许
+2，比较时，不仅比较分数（相当于skiplist的key），还比较数据本身。在redis的skiplist实现中，数据本身的内容唯一标识这份数据
+而不是由key来唯一标识。另外，当多个元素分数相同的时候，还需要根据数据内容来进字典排序。第一层链表不是一个单向链表，而是
+双向链表。为了方便倒序获取范围元素
+3，在skiplist中可以很方便的计算出每个元素的排名（rank）。
+
+set的内部实现为intset
+intset只能保存整数，采用数组保存，二分查找
